@@ -1,14 +1,14 @@
 {
-  "name": "html-hbs-template",
+  "name": "mexy-live",
   "version": "1.0.0",
-  "description": "A static HTML web template using Handlebars.",
+  "description": "A static HTML web showcasing a streamer's profile.",
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jvtrigueros/html-hbs-template.git"
+    "url": "https://github.com/jvtrigueros/mexy-live.git"
   },
   "keywords": [
     "html",
@@ -19,9 +19,9 @@
   "author": "Jose V. Trigueros <j.v.trigueros@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jvtrigueros/html-hbs-template/issues"
+    "url": "https://github.com/jvtrigueros/mexy-live/issues"
   },
-  "homepage": "https://github.com/jvtrigueros/html-hbs-template",
+  "homepage": "https://github.com/jvtrigueros/mexy-live",
   "devDependencies": {
     "browser-sync": "^2.8.2",
     "del": "^1.2.1",
