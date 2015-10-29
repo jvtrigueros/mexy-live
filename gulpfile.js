@@ -1,8 +1,10 @@
 'use strict'
 
 var gulp = require('gulp')
+  , file = require('gulp-file')
   , gzip = require('gulp-gzip')
   , hbs = require('gulp-compile-handlebars')
+  , pages = require('gulp-gh-pages')
   , rename = require('gulp-rename')
   , tar = require('gulp-tar')
 
@@ -17,6 +19,7 @@ var dist = path.join(__dirname, 'dist')
   , src = path.join(__dirname, 'src')
 
 var packageName = metadata.name + '-' + metadata.version
+  , websiteName = 'mexy.live'
 
 gulp.task('default', ['hbs', 'css', 'js', 'assets'])
 
@@ -37,11 +40,21 @@ gulp.task('js', function () {
 })
 
 gulp.task('css', function () {
-  // TODO: Process your css here.
+  return gulp.src(path.join(src, 'css', 'app.css'))
+    .pipe(gulp.dest(path.join(dist, 'css')))
+    .pipe(browserSync.stream())
 })
 
 gulp.task('assets', function () {
-  // TODO: Process your assets here.
+  return gulp.src(path.join(src, 'img', '*'))
+    .pipe(gulp.dest(path.join(dist, 'img')))
+    .pipe(browserSync.stream())
+})
+
+gulp.task('deploy', function () {
+  return gulp.src(path.join(dist, '**/*'))
+    .pipe(file('CNAME', websiteName))
+    .pipe(pages())
 })
 
 gulp.task('serve', ['default'], function () {
@@ -53,6 +66,7 @@ gulp.task('serve', ['default'], function () {
 
   gulp.watch(path.join(src, '*.hbs'), ['hbs'])
   gulp.watch(path.join(src, 'css', '*.css'), ['css'])
+  gulp.watch(path.join(src, 'img', '*'), ['assets'])
   gulp.watch(path.join(src, 'js', '*.js'), ['js'])
 })
 
